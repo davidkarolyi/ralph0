@@ -10,7 +10,7 @@ const PROMPT_TEMPLATE = `You are operating in an automated loop. Each iteration,
 
 1. Read \`${RALPH_FOLDER}/notepad.md\` to understand what happened in previous iterations
 2. Read \`${RALPH_FOLDER}/backlog.md\` to see all pending tasks
-3. Choose the **most impactful** unchecked task and implement it
+3. Choose the **next logical** unchecked task and implement it
 4. Update \`${RALPH_FOLDER}/notepad.md\`
 5. Mark the completed task with \`[x]\` in \`${RALPH_FOLDER}/backlog.md\`
 6. Commit your changes with a conventional commit message (e.g., \`feat:\`, \`fix:\`, \`refactor:\`)
@@ -70,17 +70,31 @@ export async function initCommand(): Promise<void> {
 
   console.log(chalk.green(`Initialized ${RALPH_FOLDER}`));
   console.log();
-  console.log(`  ${chalk.bold("backlog.md")}   ${chalk.dim("Your task list. Add tasks as [ ] checkboxes.")}`);
-  console.log(`  ${chalk.bold("notepad.md")}   ${chalk.dim("Agent's memory. It writes here to remember things.")}`);
-  console.log(`  ${chalk.bold("prompt.md")}    ${chalk.dim("Instructions for the agent. Customize if needed.")}`);
+  console.log(
+    `  ${chalk.bold("backlog.md")}   ${chalk.dim("Your task list. Add tasks as [ ] checkboxes.")}`,
+  );
+  console.log(
+    `  ${chalk.bold("notepad.md")}   ${chalk.dim("Agent's memory. It writes here to remember things.")}`,
+  );
+  console.log(
+    `  ${chalk.bold("prompt.md")}    ${chalk.dim("Instructions for the agent. Customize if needed.")}`,
+  );
   console.log();
   console.log(chalk.dim("Quick start:"));
-  console.log(`  1. Edit ${chalk.bold(".ralph/backlog.md")} and add your tasks`);
+  console.log(
+    `  1. Edit ${chalk.bold(".ralph/backlog.md")} and add your tasks`,
+  );
   console.log(`  2. Run ${chalk.bold("r0 run")} to start the loop`);
   console.log();
   console.log(chalk.dim("Example with all options:"));
   console.log();
-  console.log(`    ${chalk.cyan("r0 run --agent claude --hourly-budget 10 --daily-budget 50")}`);
+  console.log(
+    `    ${chalk.cyan("r0 run --agent claude --hourly-budget 10 --daily-budget 50")}`,
+  );
   console.log();
-  console.log(chalk.dim("The agent will pick tasks one by one until the backlog is empty."));
+  console.log(
+    chalk.dim(
+      "The agent will pick tasks one by one until the backlog is empty.",
+    ),
+  );
 }
