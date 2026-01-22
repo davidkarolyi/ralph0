@@ -1,0 +1,21 @@
+{
+  "name": "ralph0",
+  "version": "0.1.0",
+  "description": "A minimalistic Ralph Loop CLI for AI agent orchestration",
+  "type": "module",
+  "bin": {
+    "r0": "./dist/r0"
+  },
+  "scripts": {
+    "build": "bun build src/index.ts --compile --outfile dist/r0",
+    "dev": "bun run src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "chalk": "5.6.2"
+  }
+}
