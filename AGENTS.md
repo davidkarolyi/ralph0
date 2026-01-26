@@ -57,7 +57,7 @@ interface Agent {
 
 Currently supported:
 - **`claude`** — Spawns `claude --print --dangerously-skip-permissions`
-- **`codex`** — Spawns `codex exec --full-auto`
+- **`codex`** — Spawns `codex exec --dangerously-bypass-approvals-and-sandbox`
 
 Adding a new agent: create a class implementing `Agent` in `src/agents/`, register it in `src/agents/index.ts`.
 
