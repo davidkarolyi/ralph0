@@ -3,6 +3,7 @@
 import { parseArgs } from "util";
 import { initCommand } from "./commands/init.ts";
 import { runCommand } from "./commands/run.ts";
+import { setupSkillsCommand } from "./commands/setup-skills.ts";
 import chalk from "chalk";
 
 const { values, positionals } = parseArgs({
@@ -40,6 +41,7 @@ ${chalk.bold("r0")} - A minimalistic Ralph Loop CLI
 ${chalk.dim("Usage:")}
   r0 init              Initialize a ralph folder with starter templates
   r0 run [options]     Run the loop until the backlog is empty
+  r0 setup-skills      Install r0 skill for Claude Code
 
 ${chalk.dim("Options:")}
   -a, --agent <name>       Agent to use: claude or codex (default: claude)
@@ -107,6 +109,9 @@ switch (command) {
       hourlyBudget: parseBudgetOption(values["hourly-budget"], "hourly-budget"),
       dailyBudget: parseBudgetOption(values["daily-budget"], "daily-budget"),
     });
+    break;
+  case "setup-skills":
+    await setupSkillsCommand();
     break;
   default:
     console.error(chalk.red(`Unknown command: ${command}`));
